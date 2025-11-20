@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo.
 echo === Starting SpellCrawler ===
 
@@ -13,28 +14,22 @@ if %ERRORLEVEL% NEQ 0 (
     echo allow_server.py already running.
 )
 
-REM --- Build Docker Image ---
 echo.
 echo === Building Docker image ===
-cd spellcrawler
 docker build --no-cache -t spellcrawler .
 
-REM --- Run Container With Correct Volume Mounts ---
 echo.
 echo === Running crawler ===
-
 docker run ^
-  -v "%cd%\..\output:/app/output" ^
-  -v "%cd%\..\custom_words.txt:/app/custom_words.txt" ^
-  -v "%cd%\..\templates:/app/templates" ^
+  -v "%cd%\output:/app/output" ^
+  -v "%cd%\custom_words.txt:/app/custom_words.txt" ^
+  -v "%cd%\templates:/app/templates" ^
   spellcrawler
 
-REM --- Open Updated Report ---
 echo.
 echo === Opening updated spell report ===
-start "" "%cd%\..\output\spell_report.html"
+start "" "%cd%\output\spell_report.html"
 
 echo.
 echo === DONE ===
-
 pause
