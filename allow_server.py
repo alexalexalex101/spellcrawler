@@ -40,5 +40,6 @@ class AllowHandler(BaseHTTPRequestHandler):
             self.send_error(404)
 
 server = HTTPServer(("localhost", 5000), AllowHandler)
-print("✅ Allow-list server running on http://localhost:5000 ... (Ctrl+C to stop)")
+print("== Allow-list server running on http://localhost:5000 ... (Ctrl+C to stop) ==")
+
 server.serve_forever()
