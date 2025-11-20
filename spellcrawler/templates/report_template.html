@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Spell Check Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f9fb; }
+    h1 { color: #333; }
+    .page { margin-bottom: 30px; padding: 15px; background: #fff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    ul { list-style: disc; margin-left: 20px; color: #b00; }
+    a { text-decoration: none; color: #0066cc; word-break: break-all; }
+    .error-count {
+      background: #d9534f;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      margin-left: 8px;
+    }
+    li span.word {
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    li span.word:hover {
+      background: #ffefef;
+    }
+    li span.word.allowed {
+      color: gray;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Spell Check Report</h1>
+  <p><strong>Total pages crawled:</strong> {{ total_pages }}</p>
+  <p><em>Click a word to mark it as an allowed (false positive) word.</em></p>
+
+  {% for page in pages %}
+    <div class="page {% if page.misspelled %}has-errors{% else %}no-errors{% endif %}">
+      <h2>
+        <a href="{{ page.url }}">{{ page.url }}</a>
+        {% if page.misspelled %}
+          <span class="error-count">{{ page.misspelled|length }} errors</span>
+        {% else %}
+          <span class="error-count" style="background:#28a745;">0 errors</span>
+        {% endif %}
+      </h2>
+
+      {% if page.misspelled %}
+        <p><strong>Misspelled words:</strong></p>
+        <ul>
+          {% for word in page.misspelled %}
+            <li><span class="word" onclick="markAllowed('{{ word }}', this)">{{ word }}</span></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p style="color: green;"><strong>No spelling errors found ✅</strong></p>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <script>
+    async function markAllowed(word, el) {
+      el.classList.add('allowed');
+      const resp = await fetch('http://localhost:5000/allow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word })
+      });
+      if (resp.ok) {
+        console.log(`✅ "${word}" added to allowed words`);
+      } else {
+        alert('Failed to save word.');
+      }
+    }
+  </script>
+</body>
+</html>
