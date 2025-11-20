@@ -2,6 +2,7 @@
 
 Scan your website for misspelled words and generate an HTML report.
 
+Docker is required to run this crawler.
 Rebuild after each run.
 
 For ease of use, move project folder to the user's folder.
@@ -47,3 +48,4 @@ Easy paste 2:
 cd spellcrawler
 docker build -t spellcrawler .
 docker run -v "$(pwd)/output:/app/output" spellcrawler
+
