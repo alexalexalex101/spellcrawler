@@ -61,7 +61,7 @@ class SpellCheckSpider(scrapy.Spider):
         if os.path.exists(spanish_file):
             self.spell.word_frequency.load_text_file(spanish_file)
         else:
-            self.logger.warning(f"⚠️ spanish_words.txt not found at {spanish_file}")
+            self.logger.warning(f"z11spanish_words.txt not found at {spanish_file}!!")
         self.page_count = 0  # count how many pages were crawled
 
         # Add custom/allowed words here
@@ -86,7 +86,7 @@ class SpellCheckSpider(scrapy.Spider):
                 extra_words = [remove_accents(w.strip().lower()) for w in f if w.strip()]
             self.spell.word_frequency.load_words(extra_words)
         else:
-            self.logger.warning(f"⚠️ custom_words.txt not found at {custom_file}")
+            self.logger.warning(f"!!custom_words.txt not found at {custom_file}!!")
 
 
 
@@ -104,7 +104,7 @@ class SpellCheckSpider(scrapy.Spider):
         for w in text.split():
             stripped = w.strip(".,!?()[]{}:;\"'")
         
-            # Skip capitalized words (names, places, months)
+            # Skip capitalized words
             if stripped[:1].isupper():
                 continue
 
@@ -144,3 +144,4 @@ class SpellCheckSpider(scrapy.Spider):
             f.write(html)
 
         self.logger.info(f"✅ Spell check report saved to {output_path}")
+
