@@ -18,13 +18,27 @@ echo.
 echo === Building Docker image ===
 docker build --no-cache -t spellcrawler .
 
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo !!! ERROR: Docker image failed to build. Stopping. !!!
+    pause
+    exit /b
+)
+
 echo.
 echo === Running crawler ===
-docker run ^
+docker run --rm ^
   -v "%cd%\output:/app/output" ^
   -v "%cd%\custom_words.txt:/app/custom_words.txt" ^
   -v "%cd%\templates:/app/templates" ^
   spellcrawler
+
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo !!! ERROR: Docker run failed !!!
+    pause
+    exit /b
+)
 
 echo.
 echo === Opening updated spell report ===
