@@ -29,27 +29,27 @@ Rebuild after each run.
 
 
 ## WINDOWS:
-Easy paste 1:
-cd downloads
-cd spellcrawler-main
-python allow_server.py
+### Easy paste 1:
+##### cd downloads
+##### cd spellcrawler-main
+##### python allow_server.py
 
-Easy paste 2: 
-cd downloads
-cd spellcrawler-main
-docker build -t spellcrawler .
-docker run -v "%cd%\output:/app/output" spellcrawler
+### Easy paste 2: 
+##### cd downloads
+##### cd spellcrawler-main
+##### docker build -t spellcrawler .
+##### docker run -v "%cd%\output:/app/output" spellcrawler
 
 
 ## MAC:
-Easy paste 1:
-cd downloads
-cd spellcrawler-main
-python3 allow_server.py
+### Easy paste 1:
+##### cd downloads
+##### cd spellcrawler-main
+##### python3 allow_server.py
 
-Easy paste 2: 
-cd downloads
-cd spellcrawler-main
-docker build -t spellcrawler .
-docker run -v "$(pwd)/output:/app/output" spellcrawler
+### Easy paste 2: 
+##### cd downloads
+##### cd spellcrawler-main
+##### docker build -t spellcrawler .
+##### docker run -v "$(pwd)/output:/app/output" spellcrawler
 
