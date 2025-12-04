@@ -5,9 +5,6 @@ Scan your website for misspelled words and generate an HTML report.
 Docker must be installed and open in order to run.
 Rebuild after each run.
 
-For ease of use, move project folder to the user's folder.
-Otherwise, find the file path of the project folder and cd into the first "spellcrawler" directory.
-
 ## Quick Start
 
 1. Replace the URL in spellcheck_spider.py
@@ -23,33 +20,36 @@ Otherwise, find the file path of the project folder and cd into the first "spell
 ## Manually start
 
 1. Replace the URL in spellcheck_spider.py
-2. Point to directory: cd spellcrawler
+2. Point to directory (varies, but typically use cd <main folder file path goes here>).
 3. Run local server: python allow_server.py
-4. In a separate cmd prompt, point to directory: cd spellcrawler
+4. In a separate cmd prompt, point to directory again.
 5. Build Docker image: docker build -t spellcrawler .
 6. Run crawler: docker run -v "%cd%\output:/app/output" spellcrawler
 7. Open output/spell_report.html
 
 
-Ran from user folder:
 ## WINDOWS:
 Easy paste 1:
-cd spellcrawler
+cd downloads
+cd spellcrawler-main
 python allow_server.py
 
 Easy paste 2: 
-cd spellcrawler
+cd downloads
+cd spellcrawler-main
 docker build -t spellcrawler .
 docker run -v "%cd%\output:/app/output" spellcrawler
 
 
 ## MAC:
 Easy paste 1:
-cd spellcrawler
+cd downloads
+cd spellcrawler-main
 python3 allow_server.py
 
 Easy paste 2: 
-cd spellcrawler
+cd downloads
+cd spellcrawler-main
 docker build -t spellcrawler .
 docker run -v "$(pwd)/output:/app/output" spellcrawler
 
