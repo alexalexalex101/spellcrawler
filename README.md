@@ -2,7 +2,7 @@
 
 Scan your website for misspelled words and generate an HTML report.
 
-Docker is required to run this crawler.
+Docker must be installed and open in order to run.
 Rebuild after each run.
 
 For ease of use, move project folder to the user's folder.
@@ -12,8 +12,12 @@ Otherwise, find the file path of the project folder and cd into the first "spell
 
 1. Replace the URL in spellcheck_spider.py
 2. On Windows, run the run_spellcrawler.bat file.
-3. On Mac, run the command below in the terminal once and then run the file.
-chmod +x run_spellcrawler_mac.command
+3. On Mac, run the commands below in the terminal once and then run the file. (only need to do once per installation)
+#### Please remember that file path may vary. Replace folder names as needed.
+
+### cd downloads
+### cd spellcrawler-main (or whatever the project folder is called)
+### chmod +x run_spellcrawler_mac.command
 
 
 ## Manually start
