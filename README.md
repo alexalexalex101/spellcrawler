@@ -2,7 +2,7 @@
 
 Scan your website for misspelled words and generate an HTML report.
 
-Docker must be installed and open in order to run.
+#### <ins>*Docker must be installed and open in order to run.*</ins>
 Rebuild after each run.
 
 ## Quick Start
