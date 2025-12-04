@@ -9,7 +9,7 @@ Rebuild after each run.
 
 1. Replace the URL in spellcheck_spider.py
 2. On Windows, run the run_spellcrawler.bat file.
-3. On Mac, run the commands below in the terminal once and then run the file. (only need to do once per installation)
+3. On Mac, run the commands below in the terminal and then run the run_spellcrawler_mac.command file. (only need to do once per installation)
 #### Please remember that file path may vary. Replace folder names as needed.
 
 ### cd downloads
